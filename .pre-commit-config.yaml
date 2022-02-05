@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.2.0
+    hooks:
+      - id: pretty-format-golang
+        args: [--autofix]
+  - repo: https://github.com/tekwizely/pre-commit-golang
+    rev: v1.0.0-beta.5
+    hooks:
+      - id: go-mod-tidy
+      - id: golangci-lint
