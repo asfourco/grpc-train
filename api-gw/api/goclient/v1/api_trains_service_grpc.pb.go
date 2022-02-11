@@ -32,7 +32,7 @@ func NewTrainsServiceClient(cc grpc.ClientConnInterface) TrainsServiceClient {
 
 func (c *trainsServiceClient) CreateTrain(ctx context.Context, in *CreateTrainRequest, opts ...grpc.CallOption) (*CreateTrainResponse, error) {
 	out := new(CreateTrainResponse)
-	err := c.cc.Invoke(ctx, "/trains.v1.TrainsService/CreateTrain", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.trains.v1.TrainsService/CreateTrain", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (c *trainsServiceClient) CreateTrain(ctx context.Context, in *CreateTrainRe
 
 func (c *trainsServiceClient) ListTrains(ctx context.Context, in *ListTrainsRequest, opts ...grpc.CallOption) (*ListTrainsResponse, error) {
 	out := new(ListTrainsResponse)
-	err := c.cc.Invoke(ctx, "/trains.v1.TrainsService/ListTrains", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.trains.v1.TrainsService/ListTrains", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func _TrainsService_CreateTrain_Handler(srv interface{}, ctx context.Context, de
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trains.v1.TrainsService/CreateTrain",
+		FullMethod: "/api.trains.v1.TrainsService/CreateTrain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrainsServiceServer).CreateTrain(ctx, req.(*CreateTrainRequest))
@@ -106,7 +106,7 @@ func _TrainsService_ListTrains_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/trains.v1.TrainsService/ListTrains",
+		FullMethod: "/api.trains.v1.TrainsService/ListTrains",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TrainsServiceServer).ListTrains(ctx, req.(*ListTrainsRequest))
@@ -118,7 +118,7 @@ func _TrainsService_ListTrains_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var TrainsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "trains.v1.TrainsService",
+	ServiceName: "api.trains.v1.TrainsService",
 	HandlerType: (*TrainsServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -131,5 +131,5 @@ var TrainsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "v1/train_service.proto",
+	Metadata: "v1/api_trains_service.proto",
 }

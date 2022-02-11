@@ -32,7 +32,7 @@ func NewPassengersServiceClient(cc grpc.ClientConnInterface) PassengersServiceCl
 
 func (c *passengersServiceClient) CreatePassenger(ctx context.Context, in *CreatePassengerRequest, opts ...grpc.CallOption) (*CreatePassengerResponse, error) {
 	out := new(CreatePassengerResponse)
-	err := c.cc.Invoke(ctx, "/passengers.v1.PassengersService/CreatePassenger", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.passengers.v1.PassengersService/CreatePassenger", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -41,7 +41,7 @@ func (c *passengersServiceClient) CreatePassenger(ctx context.Context, in *Creat
 
 func (c *passengersServiceClient) ListPassengers(ctx context.Context, in *ListPassengersRequest, opts ...grpc.CallOption) (*ListPassengersResponse, error) {
 	out := new(ListPassengersResponse)
-	err := c.cc.Invoke(ctx, "/passengers.v1.PassengersService/ListPassengers", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.passengers.v1.PassengersService/ListPassengers", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func _PassengersService_CreatePassenger_Handler(srv interface{}, ctx context.Con
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/passengers.v1.PassengersService/CreatePassenger",
+		FullMethod: "/api.passengers.v1.PassengersService/CreatePassenger",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PassengersServiceServer).CreatePassenger(ctx, req.(*CreatePassengerRequest))
@@ -106,7 +106,7 @@ func _PassengersService_ListPassengers_Handler(srv interface{}, ctx context.Cont
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/passengers.v1.PassengersService/ListPassengers",
+		FullMethod: "/api.passengers.v1.PassengersService/ListPassengers",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PassengersServiceServer).ListPassengers(ctx, req.(*ListPassengersRequest))
@@ -118,7 +118,7 @@ func _PassengersService_ListPassengers_Handler(srv interface{}, ctx context.Cont
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var PassengersService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "passengers.v1.PassengersService",
+	ServiceName: "api.passengers.v1.PassengersService",
 	HandlerType: (*PassengersServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -131,5 +131,5 @@ var PassengersService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "v1/passenger_service.proto",
+	Metadata: "v1/api_passengers_service.proto",
 }

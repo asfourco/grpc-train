@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package api.passengers.v1;
+
+option go_package = "github.com/asfourco/grpc-train/passengers/api/v1";
+
+message Passenger {
+  string id = 1;
+  string name = 2;
+}
+
+message ListPassengersRequest {}
+
+message ListPassengersResponse { repeated Passenger passengers = 1; }
+
+message CreatePassengerRequest {
+  string id = 1;
+  string name = 2;
+}
+
+message CreatePassengerResponse { Passenger passenger = 1; }
+
+service PassengersService {
+  rpc CreatePassenger(CreatePassengerRequest) returns (CreatePassengerResponse);
+  rpc ListPassengers(ListPassengersRequest) returns (ListPassengersResponse);
+}

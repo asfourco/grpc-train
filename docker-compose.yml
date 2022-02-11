@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - image_name=apigw
+    image: asfourco/grpc-train
+    ports:
+      - "9090:9090"
+    links:
+      - trains
+      - passengers
+
+  passengers:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - image_name=passengers
+    image: asfourco/grpc-train
+
+  trains:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - image_name=trains
+    image: asfourco/grpc-train
