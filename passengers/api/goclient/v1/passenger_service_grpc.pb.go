@@ -49,15 +49,14 @@ func (c *passengersServiceClient) ListPassengers(ctx context.Context, in *ListPa
 }
 
 // PassengersServiceServer is the server API for PassengersService service.
-// All implementations must embed UnimplementedPassengersServiceServer
+// All implementations should embed UnimplementedPassengersServiceServer
 // for forward compatibility
 type PassengersServiceServer interface {
 	CreatePassenger(context.Context, *CreatePassengerRequest) (*CreatePassengerResponse, error)
 	ListPassengers(context.Context, *ListPassengersRequest) (*ListPassengersResponse, error)
-	mustEmbedUnimplementedPassengersServiceServer()
 }
 
-// UnimplementedPassengersServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedPassengersServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedPassengersServiceServer struct {
 }
 
@@ -67,7 +66,6 @@ func (UnimplementedPassengersServiceServer) CreatePassenger(context.Context, *Cr
 func (UnimplementedPassengersServiceServer) ListPassengers(context.Context, *ListPassengersRequest) (*ListPassengersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListPassengers not implemented")
 }
-func (UnimplementedPassengersServiceServer) mustEmbedUnimplementedPassengersServiceServer() {}
 
 // UnsafePassengersServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to PassengersServiceServer will

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api.passengers.v1;
 
-option go_package = "github.com/asfourco/grpc-train/passegners/api/v1";
+option go_package = "github.com/asfourco/grpc-train/passengers/api/v1";
 
 message Passenger {
   string id = 1;

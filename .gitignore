@@ -13,6 +13,11 @@
 *.so
 *.dylib
 
+# Build directories
+out
+dist
+
+
 # Test binary, built with `go test -c`
 *.test
 

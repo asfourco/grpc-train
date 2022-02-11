@@ -49,15 +49,14 @@ func (c *trainsServiceClient) ListTrains(ctx context.Context, in *ListTrainsRequ
 }
 
 // TrainsServiceServer is the server API for TrainsService service.
-// All implementations must embed UnimplementedTrainsServiceServer
+// All implementations should embed UnimplementedTrainsServiceServer
 // for forward compatibility
 type TrainsServiceServer interface {
 	CreateTrain(context.Context, *CreateTrainRequest) (*CreateTrainResponse, error)
 	ListTrains(context.Context, *ListTrainsRequest) (*ListTrainsResponse, error)
-	mustEmbedUnimplementedTrainsServiceServer()
 }
 
-// UnimplementedTrainsServiceServer must be embedded to have forward compatible implementations.
+// UnimplementedTrainsServiceServer should be embedded to have forward compatible implementations.
 type UnimplementedTrainsServiceServer struct {
 }
 
@@ -67,7 +66,6 @@ func (UnimplementedTrainsServiceServer) CreateTrain(context.Context, *CreateTrai
 func (UnimplementedTrainsServiceServer) ListTrains(context.Context, *ListTrainsRequest) (*ListTrainsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTrains not implemented")
 }
-func (UnimplementedTrainsServiceServer) mustEmbedUnimplementedTrainsServiceServer() {}
 
 // UnsafeTrainsServiceServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to TrainsServiceServer will
