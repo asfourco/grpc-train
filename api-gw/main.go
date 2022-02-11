@@ -10,6 +10,7 @@ import (
 	passengersSvc "github.com/asfourco/grpc-train/passengers/api/goclient/v1"
 	trainsSvc "github.com/asfourco/grpc-train/trains/api/goclient/v1"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 )
 
 const (
@@ -19,7 +20,7 @@ const (
 )
 
 func newPassengersSvcClient() (passengersSvc.PassengersServiceClient, error) {
-	conn, err := grpc.DialContext(context.TODO(), passengersSvcAddress, grpc.WithInsecure())
+	conn, err := grpc.DialContext(context.TODO(), passengersSvcAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, fmt.Errorf("trains client: %w", err)
 	}
@@ -27,7 +28,7 @@ func newPassengersSvcClient() (passengersSvc.PassengersServiceClient, error) {
 }
 
 func newTrainsSvcClient() (trainsSvc.TrainsServiceClient, error) {
-	conn, err := grpc.DialContext(context.TODO(), trainsSvcAddress, grpc.WithInsecure())
+	conn, err := grpc.DialContext(context.TODO(), trainsSvcAddress, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, fmt.Errorf("passengers client: %w", err)
 	}
